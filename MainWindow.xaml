@@ -1,0 +1,69 @@
+﻿<Window x:Class="WpfAppClient1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppClient1"
+        mc:Ignorable="d"
+        Title="Наша команда" Height="450" Width="600" MinHeight="300" MinWidth="497">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <ListBox x:Name="workersList" ItemsSource="{Binding}" Margin="10,10,10,0">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock FontSize="16" Foreground="#FF1C449A">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat=" {0} {1} {2}">
+                                    <Binding Path="FirstName"/>
+                                    <Binding Path="LastName"/>
+                                    <Binding Path="MiddleName"/>
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                        
+                        <TextBlock FontSize="13" Margin="10,-3,0,0">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Text" Value="Женщина"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Sex}" Value="False" >
+                                            <Setter Property="Text" Value="Мужчина"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+
+                        <TextBlock FontSize="13" Margin="10,0,0,0">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Text" Value="Есть дети"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding HaveChildren}" Value="False" >
+                                            <Setter Property="Text" Value="Нет детей"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                        
+                        <TextBlock Text="{Binding BirthDay}" FontSize="13" Margin="10,0,0,0" />
+
+
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Тест связи" Margin="10,10,9,10" Click="TestServer_Click" Width="75" />
+            <Button Content="Обновить" Margin="10,10,9,10" Click="Update_Click" Width="75" />
+            <Button Content="Добавить" Margin="10" Click="Add_Click" Width="75" />
+            <Button Content="Изменить" Margin="10" Click="Edit_Click" Width="75"  />
+            <Button Content="Удалить" Margin="10" Click="Delete_Click" Width="75"  />
+        </StackPanel>
+    </Grid>
+</Window>

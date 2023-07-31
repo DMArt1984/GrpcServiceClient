@@ -11,6 +11,7 @@
             <RowDefinition />
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
+        <!--Список работников-->
         <ListBox x:Name="workersList" ItemsSource="{Binding}" Margin="10,10,10,0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -58,6 +59,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <!--Кнопки-->
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Content="Тест связи" Margin="10,10,9,10" Click="TestServer_Click" Width="75" />
             <Button Content="Обновить" Margin="10,10,9,10" Click="Update_Click" Width="75" />

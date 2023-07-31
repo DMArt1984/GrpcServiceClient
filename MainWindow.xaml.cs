@@ -66,7 +66,7 @@ namespace WpfAppClient1
 
             } catch(Exception ex)
             {
-                MessageBox.Show(ex.Message, "Ошибка " + ex.HResult.ToString("X"));
+                MessageBox.Show(ex.Message, "Ошибка " + ex.HResult.ToString("X"), MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -81,7 +81,7 @@ namespace WpfAppClient1
             {
                 // команда на получение списка
                 ListReply workers = await client.ListWorkersAsync(new Google.Protobuf.WellKnownTypes.Empty());
-                ObservableCollection<WorkerReply> collection = new ObservableCollection<WorkerReply>(workers.Workers.ToList());
+                ObservableCollection<WorkerReply> collection = new ObservableCollection<WorkerReply>(workers.Workers.OrderBy(x => x.FirstName).ToList());
                 // если на сервере возникнет исключение, то мы получим пустой список, в рамках данной задачи этого достаточно!
 
                 // устанавливаем список в качестве контекста
@@ -89,7 +89,7 @@ namespace WpfAppClient1
             }
             catch (Exception ex) 
             { 
-                MessageBox.Show(ex.Message, "Ошибка получения списка " + ex.HResult.ToString("X"));
+                MessageBox.Show(ex.Message, "Ошибка получения списка " + ex.HResult.ToString("X"), MessageBoxButton.OK, MessageBoxImage.Error);
             }
             
         }
@@ -125,7 +125,7 @@ namespace WpfAppClient1
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Ошибка добавления " + ex.HResult.ToString("X"));
+                MessageBox.Show(ex.Message, "Ошибка добавления " + ex.HResult.ToString("X"), MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -171,7 +171,7 @@ namespace WpfAppClient1
                 }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Ошибка редактирования " + ex.HResult.ToString("X"));
+                MessageBox.Show(ex.Message, "Ошибка редактирования " + ex.HResult.ToString("X"), MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -195,7 +195,7 @@ namespace WpfAppClient1
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Ошибка удаления " + ex.HResult.ToString("X"));
+                MessageBox.Show(ex.Message, "Ошибка удаления " + ex.HResult.ToString("X"), MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

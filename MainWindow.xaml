@@ -15,10 +15,12 @@
         <ListBox x:Name="workersList" ItemsSource="{Binding}" Margin="10,10,10,0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Margin="0,0,0,10">
+
+                    <StackPanel Grid.Column="2" Margin="0,0,0,10">
                         <TextBlock FontSize="16" Foreground="#FF1C449A">
                             <TextBlock.Text>
-                                <MultiBinding StringFormat=" {0} {1} {2}">
+                                <MultiBinding StringFormat="ID={0}. {1} {2} {3}">
+                                    <Binding Path="Id"/>
                                     <Binding Path="FirstName"/>
                                     <Binding Path="LastName"/>
                                     <Binding Path="MiddleName"/>

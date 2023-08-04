@@ -41,7 +41,7 @@ namespace WpfAppClient1
         private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             // подключение
-            channel = GrpcChannel.ForAddress("https://localhost:7254"); // адрес сервера актуален?
+            channel = GrpcChannel.ForAddress(Settings.GetConnectString()); // адрес сервера актуален?
             client = new Accounter.AccounterClient(channel); // мы - клиент!
 
             // обновление списка
